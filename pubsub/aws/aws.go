@@ -283,6 +283,10 @@ func (m *subscriberMessage) ExtendDoneDeadline(d time.Duration) error {
 	return err
 }
 
+func (m *subscriberMessage) MessageAttributes() map[string]*sqs.MessageAttributeValue {
+	return m.message.MessageAttributes
+}
+
 // Done will queue up a message to be deleted. By default,
 // the `SQSDeleteBufferSize` will be 0, so this will block until the
 // message has been deleted.
